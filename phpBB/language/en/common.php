@@ -560,6 +560,7 @@ $lang = array_merge($lang, array(
 	'SUBFORUM'					=> 'Subforum',
 	'SUBFORUMS'					=> 'Subforums',
 	'SUBJECT'					=> 'Subject',
+	'FEMAILS'                   => 'Faculty to email',
 	'SUBMIT'					=> 'Submit',
 
 	'TERMS_USE'			=> 'Terms of use',
