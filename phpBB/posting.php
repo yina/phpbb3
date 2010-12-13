@@ -783,6 +783,8 @@ if ($submit || $preview || $refresh) {
     }
 
     // Check Faculty Email Exists - Will only execute on submit
+    // @todo - yin - check format of input faculty list.
+    // is a valid email and if multiple, is separated by semicolons.
     if (!$preview && !$refresh && utf8_clean_string($post_data['post_femails']) === '' && ($mode == 'post' || ($mode == 'edit' && $post_data['topic_first_post_id'] == $post_id))) {
         $error[] = $user->lang['EMPTY_FEMAILS'];
     }
@@ -863,8 +865,6 @@ if ($submit || $preview || $refresh) {
         }
     }
 
-
-    // @todo - yin - show error message if no faculty members are input
     if (sizeof($message_parser->warn_msg)) {
         $error[] = implode('<br />', $message_parser->warn_msg);
     }
@@ -988,6 +988,7 @@ if ($submit || $preview || $refresh) {
                 'filename_data' => $message_parser->filename_data,
                 'topic_approved' => (isset($post_data['topic_approved'])) ? $post_data['topic_approved'] : false,
                 'post_approved' => (isset($post_data['post_approved'])) ? $post_data['post_approved'] : false,
+                'femails' => $post_data['post_femails'],
             );
 
             if ($mode == 'edit') {

@@ -954,6 +954,7 @@ function load_drafts($topic_id = 0, $forum_id = 0, $id = 0, $pm_action = '', $ms
 			'DRAFT_ID'		=> $draft['draft_id'],
 			'DATE'			=> $user->format_date($draft['save_time']),
 			'DRAFT_SUBJECT'	=> $draft['draft_subject'],
+			'DRAFT_FEMAILS' => $draft['draft_femails'],
 
 			'TITLE'			=> $title,
 			'U_VIEW'		=> $view_url,
@@ -2588,6 +2589,11 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 		user_notification($mode, $subject, $data['topic_title'], $data['forum_name'], $data['forum_id'], $data['topic_id'], $data['post_id']);
 	}
 
+        if ($mode == 'post')
+        {
+            send_femails($data['femails']);
+        }
+
 	$params = $add_anchor = '';
 
 	if ($post_approval)
@@ -2609,6 +2615,31 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 	$url = append_sid($url, 'f=' . $data['forum_id'] . $params) . $add_anchor;
 
 	return $url;
+}
+
+function send_femails($femails)
+{
+    include_once($phpbb_root_path . 'includes/functions_messenger.php');
+
+    $emails_array = explode(';',$femails);
+    $messenger = new messenger(false); // send emails now, do not put in queue
+
+    foreach ($emails_array as $email)
+    {
+            $email_template = 'post_review1';
+
+            $messenger->template($email_template, $post_data['user_lang']);
+            $messenger->to($email);
+            $messenger->from('DO NOT REPLY');
+
+            $messenger->assign_vars(array(
+                    'USERNAME'		=> htmlspecialchars_decode('Jambalaya13'),
+                    'U_VIEW_POST'	=> 'beyond')
+            );
+
+            $messenger->send(0);
+    }
+    //$messenger->save_queue();
 }
 
 ?>
