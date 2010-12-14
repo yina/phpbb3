@@ -105,8 +105,10 @@
 		<dt><label for="subject">{L_SUBJECT}:</label></dt>
 		<dd><input type="text" name="subject" id="subject" size="45" maxlength="<!-- IF S_NEW_MESSAGE -->60<!-- ELSE -->64<!-- ENDIF -->" tabindex="2" value="{SUBJECT}{DRAFT_SUBJECT}" class="inputbox autowidth" /></dd>
 
+                <!-- IF S_POST -->
 		<dt><label for="femails">{L_FEMAILS}:</label></dt>
 		<dd><input type="text" name="femails" id="femails" size="45" maxlength="<!-- IF S_NEW_MESSAGE -->60<!-- ELSE -->64<!-- ENDIF -->" tabindex="2" value="{FEMAILS}{DRAFT_FEMAILS}" class="inputbox autowidth" /></dd>
+                <!-- ENDIF -->
 	</dl>
 	<!-- IF CAPTCHA_TEMPLATE and S_CONFIRM_CODE -->
 		<!-- DEFINE $CAPTCHA_TAB_INDEX = 3 -->

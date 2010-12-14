@@ -1304,6 +1304,7 @@ $template->assign_vars(array(
     'S_BBCODE_FLASH' => $flash_status,
     'S_BBCODE_QUOTE' => $quote_status,
     'S_POST_ACTION' => $s_action,
+    'S_POST' => ($mode == 'post') ? 1 : 0,
     'S_HIDDEN_FIELDS' => $s_hidden_fields)
 );
 
