@@ -163,6 +163,7 @@ $lang = array_merge($lang, array(
 	'EMAIL_SMTP_ERROR_RESPONSE'			=> 'Ran into problems sending e-mail at <strong>Line %1$s</strong>. Response: %2$s.',
 	'EMPTY_SUBJECT'						=> 'You must specify a subject when posting a new topic.',
 	'EMPTY_FEMAILS'                  => 'You must specify senior faculty emails to review your post.',
+        'INVALID_EMAIL'                  => 'One of your email addresses is invalid. Please correct and submit again.',
         'EMPTY_MESSAGE_SUBJECT'				=> 'You must specify a subject when composing a new message.',
 	'ENABLED'							=> 'Enabled',
 	'ENCLOSURE'							=> 'Enclosure',

@@ -785,6 +785,25 @@ if ($submit || $preview || $refresh) {
     // Check Faculty Email Exists - Will only execute on submit
     // @todo - yin - check format of input faculty list.
     // is a valid email and if multiple, is separated by semicolons.
+    // check semicolon separators
+    // explode and check valid email - 13.6
+    if ($mode == 'post')
+    {
+        $emails_string = $post_data['post_femails'];
+        $emails_string = trim($emails_string);
+        $emails_string = trim($emails_string, ' ');
+        $emails_array = explode(';', $emails_string);
+        foreach($emails_array as $email)
+        {
+            if (!valid_email($email))
+            {
+                $error[] = $user->lang['INVALID_EMAIL'];
+            }
+        }
+    }
+
+
+
     if (!$preview && !$refresh && utf8_clean_string($post_data['post_femails']) === '' && ($mode == 'post' || ($mode == 'edit' && $post_data['topic_first_post_id'] == $post_id))) {
         $error[] = $user->lang['EMPTY_FEMAILS'];
     }
