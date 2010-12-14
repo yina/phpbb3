@@ -1,14 +1,18 @@
-Subject: An invitation to help junior faculty
+Subject: An personal invitation to help junior faculty
 
 Dr. {USERNAME},
 
-NYU is piloting a feedback system to enhance the quality of specific aims.
-
-The system gathers feedback from senior faculty with grant ideas and submissions.
+Dr. Cronstein and I invite you to give feedback to a junior faculty member
+for their proposed specific aims.
 
 You have received this email because a
 junior faculty member has selected you to provide feedback for your grant
 because of expertise determined from your publication record.
+
+NYU is piloting this feedback system to enhance grant quality.
+
+The system gathers feedback from senior faculty with grant ideas and submissions.
+
 
 Participation is completely optional. The system will record all interactions
 and provides feedback to the administration, senior faculty, and junior faculty.
@@ -24,6 +28,11 @@ and provide feedback for the quality of the senior faculty's review.
 
 At the link below, you will be given a questionnaire to determine whether you
 may provide feedback for this grant proposal.
+
+Please answer the corresponding questions in a follow up email.
+
+You will be required to register on the prototype site. Responding will automatically
+sign you up for the thread and notify you of comments as they are posted.
 
 
 Thank you for your time and attention.
