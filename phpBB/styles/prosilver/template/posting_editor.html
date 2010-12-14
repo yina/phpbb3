@@ -7,6 +7,20 @@
 <fieldset class="fields1">
 	<!-- IF ERROR --><p class="error">{ERROR}</p><!-- ENDIF -->
 
+        <!-- IF S_POST -->
+        <dl style="clear: left;">
+                <dt><label>Instructions:</label></dt>
+		<dd>
+                    1. Select relevant faculty from <a href="http://far.med.nyu.edu">http://far.med.nyu.edu</a>.<br/>
+                    2. Obtain email addresses for these faculty members.<br/>
+                    3. Post the name of your proposal as the subject.<br/>
+                    4. Post the faculty to email and your specific aims.<br/>
+                    4. Submit.
+                </dd>
+        </dl>
+        <!-- ENDIF -->
+
+
 	<!-- IF S_PRIVMSGS and not S_SHOW_DRAFTS -->
 
 		<div class="column1">
@@ -110,8 +124,6 @@
 		<dd><input type="text" name="femails" id="femails" size="45" maxlength="<!-- IF S_NEW_MESSAGE -->60<!-- ELSE -->64<!-- ENDIF -->" tabindex="2" value="{FEMAILS}{DRAFT_FEMAILS}" class="inputbox autowidth" /></dd>
                 <dt><label for="femails">&nbsp;</label></dt>
 		<dd>Multiple emails separated by semicolons. <br/>For example: 'johndoes@nyumc.org;constance@gmail.com'</dd>
-
-
                 <!-- ENDIF -->
 	</dl>
 	<!-- IF CAPTCHA_TEMPLATE and S_CONFIRM_CODE -->
