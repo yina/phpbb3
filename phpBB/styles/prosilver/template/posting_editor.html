@@ -108,6 +108,10 @@
                 <!-- IF S_POST -->
 		<dt><label for="femails">{L_FEMAILS}:</label></dt>
 		<dd><input type="text" name="femails" id="femails" size="45" maxlength="<!-- IF S_NEW_MESSAGE -->60<!-- ELSE -->64<!-- ENDIF -->" tabindex="2" value="{FEMAILS}{DRAFT_FEMAILS}" class="inputbox autowidth" /></dd>
+                <dt><label for="femails">&nbsp;</label></dt>
+		<dd>Multiple emails separated by semicolons. <br/>For example: 'johndoes@nyumc.org;constance@gmail.com'</dd>
+
+
                 <!-- ENDIF -->
 	</dl>
 	<!-- IF CAPTCHA_TEMPLATE and S_CONFIRM_CODE -->
