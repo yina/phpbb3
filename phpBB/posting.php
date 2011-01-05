@@ -800,6 +800,9 @@ if ($submit || $preview || $refresh) {
                 $error[] = $user->lang['INVALID_EMAIL'];
             }
         }
+
+        // if everything is ok, prepend the emails to the beginning of the message
+        $message_parser->message = "Aims emailed to " . join(", ", $emails_array) . "\n\n" . $message_parser->message;
     }
 
 
