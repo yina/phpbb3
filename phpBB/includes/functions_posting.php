@@ -1700,6 +1700,7 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 	// Collect Information
 	switch ($post_mode)
 	{
+            // if $post, do this but also add a line for the faculty that were emailed.
 		case 'post':
 		case 'reply':
 			$sql_data[POSTS_TABLE]['sql'] = array(
@@ -1716,6 +1717,7 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 				'post_username'		=> (!$user->data['is_registered']) ? $username : '',
 				'post_subject'		=> $subject,
 				'post_text'			=> $data['message'],
+                                'post_femails'          => $data['femails'],
 				'post_checksum'		=> $data['message_md5'],
 				'post_attachment'	=> (!empty($data['attachment_data'])) ? 1 : 0,
 				'bbcode_bitfield'	=> $data['bbcode_bitfield'],
@@ -1723,6 +1725,9 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 				'post_postcount'	=> ($auth->acl_get('f_postcount', $data['forum_id'])) ? 1 : 0,
 				'post_edit_locked'	=> $data['post_edit_locked']
 			);
+
+ 
+
 		break;
 
 		case 'edit_first_post':
@@ -1999,7 +2004,7 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 			);
 		}
 
-		unset($sql_data[POSTS_TABLE]['sql']);
+		//unset($sql_data[POSTS_TABLE]['sql']);
 	}
 
 	$make_global = false;
@@ -2591,7 +2596,13 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 
         if ($mode == 'post')
         {
-            send_femails($data['femails']);
+            $url = generate_board_url() . "/viewtopic.$phpEx?f={$data['forum_id']}&t={$data['topic_id']}";
+            
+            send_femails($data['femails'], $url);
+
+            //'U_VIEW_TOPIC'	=> generate_board_url() . "/viewtopic.$phpEx?f={$post_data['forum_id']}&t={$post_data['topic_id']}&e=0",
+	    //'U_VIEW_POST'	=> generate_board_url() . "/viewtopic.$phpEx?f={$post_data['forum_id']}&t={$post_data['topic_id']}&p=$post_id&e=$post_id")
+
         }
 
 	$params = $add_anchor = '';
@@ -2614,10 +2625,112 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 	$url = (!$params) ? "{$phpbb_root_path}viewforum.$phpEx" : "{$phpbb_root_path}viewtopic.$phpEx";
 	$url = append_sid($url, 'f=' . $data['forum_id'] . $params) . $add_anchor;
 
+        // if this is a new post and there is an femail,
+        // add a line to the query indicating who was emailed.
+        // when the faculty responds, add their comments to this thread.
+        if ($post_mode == 'post' && post_femails != '')
+        {
+            print "I'm here";
+            //add_email_reply($sql_data, $db);
+            # send items to function
+            unset($sql_data[POSTS_TABLE]['sql']);
+        }
+
+
+
 	return $url;
 }
 
-function send_femails($femails)
+function add_email_reply($sql_data, $db)
+{
+//    			$sql_data[POSTS_TABLE]['sql'] = array(
+//				'forum_id'			=> ($topic_type == POST_GLOBAL) ? 0 : $data['forum_id'],
+//				'poster_id'			=> (int) $user->data['user_id'],
+//				'icon_id'			=> $data['icon_id'],
+//				'poster_ip'			=> $user->ip,
+//				'post_time'			=> $current_time,
+//				'post_approved'		=> $post_approval,
+//				'enable_bbcode'		=> $data['enable_bbcode'],
+//				'enable_smilies'	=> $data['enable_smilies'],
+//				'enable_magic_url'	=> $data['enable_urls'],
+//				'enable_sig'		=> $data['enable_sig'],
+//				'post_username'		=> (!$user->data['is_registered']) ? $username : '',
+//				'post_subject'		=> $subject,
+//				'post_text'			=> $data['message'],
+//                                'post_femails'          => $data['femails'],
+//				'post_checksum'		=> $data['message_md5'],
+//				'post_attachment'	=> (!empty($data['attachment_data'])) ? 1 : 0,
+//				'bbcode_bitfield'	=> $data['bbcode_bitfield'],
+//				'bbcode_uid'		=> $data['bbcode_uid'],
+//				'post_postcount'	=> ($auth->acl_get('f_postcount', $data['forum_id'])) ? 1 : 0,
+//				'post_edit_locked'	=> $data['post_edit_locked']
+//			);
+//
+//
+//                        			$sql_data[TOPICS_TABLE]['sql'] = array(
+//				'topic_poster'				=> (int) $user->data['user_id'],
+//				'topic_time'				=> $current_time,
+//				'topic_last_view_time'		=> $current_time,
+//				'forum_id'					=> ($topic_type == POST_GLOBAL) ? 0 : $data['forum_id'],
+//				'icon_id'					=> $data['icon_id'],
+//				'topic_approved'			=> $post_approval,
+//				'topic_title'				=> $subject,
+//				'topic_first_poster_name'	=> (!$user->data['is_registered'] && $username) ? $username : (($user->data['user_id'] != ANONYMOUS) ? $user->data['username'] : ''),
+//				'topic_first_poster_colour'	=> $user->data['user_colour'],
+//				'topic_type'				=> $topic_type,
+//				'topic_time_limit'			=> ($topic_type == POST_STICKY || $topic_type == POST_ANNOUNCE) ? ($data['topic_time_limit'] * 86400) : 0,
+//				'topic_attachment'			=> (!empty($data['attachment_data'])) ? 1 : 0,
+//			);
+
+
+                // insert into topics table
+                $sql = 'INSERT INTO ' . TOPICS_TABLE . ' ' .
+		$db->sql_build_array('INSERT', $sql_data[TOPICS_TABLE]['sql']);
+		$db->sql_query($sql);
+
+		$data['topic_id'] = $db->sql_nextid();
+
+		$sql_data[POSTS_TABLE]['sql'] = array_merge($sql_data[POSTS_TABLE]['sql'], array(
+			'topic_id' => $data['topic_id'])
+		);
+		unset($sql_data[TOPICS_TABLE]['sql']);
+
+
+                // insert into posts table
+                $sql = 'INSERT INTO ' . POSTS_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_data[POSTS_TABLE]['sql']);
+		$db->sql_query($sql);
+		$data['post_id'] = $db->sql_nextid();
+
+		if ($post_mode == 'post')
+		{
+			$sql_data[TOPICS_TABLE]['sql'] = array(
+				'topic_first_post_id'		=> $data['post_id'],
+				'topic_last_post_id'		=> $data['post_id'],
+				'topic_last_post_time'		=> $current_time,
+				'topic_last_poster_id'		=> (int) $user->data['user_id'],
+				'topic_last_poster_name'	=> (!$user->data['is_registered'] && $username) ? $username : (($user->data['user_id'] != ANONYMOUS) ? $user->data['username'] : ''),
+				'topic_last_poster_colour'	=> $user->data['user_colour'],
+				'topic_last_post_subject'	=> (string) $subject,
+			);
+		}
+
+		unset($sql_data[POSTS_TABLE]['sql']);
+
+                	// Update the topics table
+	if (isset($sql_data[TOPICS_TABLE]['sql']))
+	{
+		$sql = 'UPDATE ' . TOPICS_TABLE . '
+			SET ' . $db->sql_build_array('UPDATE', $sql_data[TOPICS_TABLE]['sql']) . '
+			WHERE topic_id = ' . $data['topic_id'];
+		$db->sql_query($sql);
+	}
+
+
+}
+
+
+
+function send_femails($femails, $url)
 {
     include_once($phpbb_root_path . 'includes/functions_messenger.php');
 
@@ -2633,8 +2746,8 @@ function send_femails($femails)
             $messenger->from('DO NOT REPLY');
 
             $messenger->assign_vars(array(
-                    'USERNAME'		=> htmlspecialchars_decode('Jambalaya13'),
-                    'U_VIEW_POST'	=> 'beyond')
+                    'USERNAME'		=> htmlspecialchars_decode($email),
+                    'U_VIEW_POST'	=> htmlspecialchars_decode($url))
             );
 
             $messenger->send(0);

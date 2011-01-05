@@ -1,6 +1,6 @@
 Subject: A personal invitation to help junior faculty.
 
-Dr. {USERNAME},
+{USERNAME},
 
 Dr. Cronstein and I invite you to give feedback to a junior faculty member
 for their proposed specific aims for an upcoming grant application.  You
@@ -12,6 +12,8 @@ A followup email will be sent with a few short questions and a link to the propo
 We greatly value your advice and input in this effort to enhance the grant
 applications of our junior faculty.   It is more important now to provide
 constructive criticism of junior faculty grants than it has ever been.
+
+{U_VIEW_POST}
 
 Thank you for your time and attention.
 
