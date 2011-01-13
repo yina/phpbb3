@@ -802,7 +802,7 @@ if ($submit || $preview || $refresh) {
         }
 
         // if everything is ok, prepend the emails to the beginning of the message
-        $message_parser->message = "Aims emailed to " . join(", ", $emails_array) . "\n\n" . $message_parser->message;
+        //$message_parser->message = "Aims emailed to " . join(", ", $emails_array) . "\n\n" . $message_parser->message;
     }
 
 

@@ -2630,7 +2630,8 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
         // when the faculty responds, add their comments to this thread.
         if ($post_mode == 'post' && post_femails != '')
         {
-            print "I'm here";
+            post_reply('reply', 'Emailed Faculty', $data['forum_id'], 
+                    $data['topic_id'], 'Aims emailed to ' . $data['femails']);
             //add_email_reply($sql_data, $db);
             # send items to function
             unset($sql_data[POSTS_TABLE]['sql']);
@@ -2639,6 +2640,45 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
 
 
 	return $url;
+}
+
+
+function post_reply($mode, $subject, $forum_id, $topic_id, $message)
+{
+    $username = '';
+    $topic_type = POST_NORMAL;
+    $poll = '';
+
+    $data = array(
+            'forum_id'			=> $forum_id,
+            'icon_id'			=> false,
+            'topic_id'			=> $topic_id,
+
+            'enable_bbcode'		=> true,
+            'enable_smilies'            => true,
+            'enable_urls'		=> true,
+            'enable_sig'		=> true,
+
+            'message'			=> $message,
+            'post_checksum'		=> '',
+            'message_md5'		=> '',
+
+            'bbcode_bitfield'           => '',
+            'bbcode_uid'		=> '',
+
+            'post_edit_locked'          => 1,
+            'topic_title'		=> $subject,
+            'notify_set'		=> false,
+            'notify'			=> false,
+            'post_time' 		=> 0,
+            'forum_name'		=> '',
+            'enable_indexing'           => true,
+            'femails'                   => 'test@yin.org',
+    );
+
+    submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $update_message = true, $update_search_index = true);
+
+
 }
 
 function add_email_reply($sql_data, $db)
@@ -2727,7 +2767,6 @@ function add_email_reply($sql_data, $db)
 
 
 }
-
 
 
 function send_femails($femails, $url)
