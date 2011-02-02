@@ -213,7 +213,7 @@ function user_add($user_row, $cp_data = false)
 		'user_full_folder'		=> PRIVMSGS_NO_BOX,
 		'user_emailtime'		=> 0,
 
-		'user_notify'			=> 0,
+		'user_notify'			=> 1,
 		'user_notify_pm'		=> 1,
 		'user_notify_type'		=> NOTIFY_EMAIL,
 		'user_allow_pm'			=> 1,
