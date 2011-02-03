@@ -2848,6 +2848,23 @@ function valid_email($email)
             $isValid = false;
          }
       }
+
+      if ($isValid)
+      {
+          if (strcmp($domain, 'nyumc.org') == 0)
+          {
+              $isValid = true;
+          }
+          else if (strcmp($domain, 'med.nyu.edu') == 0)
+          {
+              $isValid = true;
+          }
+          else
+          {
+              $isValid = false;
+          }
+      }
+
       //if ($isValid && !(checkdnsrr($domain,"MX") ||  ↪checkdnsrr($domain,"A")))
       //{
       //   // domain not found in DNS
