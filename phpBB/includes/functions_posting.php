@@ -2782,7 +2782,7 @@ function send_femails($femails, $url)
 
             $messenger->template($email_template, $post_data['user_lang']);
             $messenger->to($email);
-            $messenger->from('DO NOT REPLY');
+            $messenger->from('yin.a@nyumc.org');
 
             $messenger->assign_vars(array(
                     'USERNAME'		=> htmlspecialchars_decode($email),
