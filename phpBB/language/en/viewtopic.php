@@ -64,7 +64,7 @@ $lang = array_merge($lang, array(
 	
 	'LINKAGE_FORBIDDEN'		=> 'You are not authorised to view, download or link from/to this site.',
 	'LOGIN_NOTIFY_TOPIC'	=> 'You have been notified about this topic, please login to view it.',
-	'LOGIN_VIEWTOPIC'		=> 'The board requires you to be registered and logged in to view this topic.',
+	'LOGIN_VIEWTOPIC'		=> 'The board requires you to login with your kerberos id to view this topic.',
 
 	'MAKE_ANNOUNCE'				=> 'Change to “Announcement”',
 	'MAKE_GLOBAL'				=> 'Change to “Global”',
