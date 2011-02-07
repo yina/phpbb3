@@ -11,7 +11,17 @@ We greatly value your advice and input in this effort to enhance the grant
 applications of our junior faculty.   It is more important now to provide
 constructive criticism of junior faculty grants than it has ever been.
 
-{U_VIEW_POST}
+You can find the Specific Aims page of a new proposal at:
+
+{U_VIEW_POST}.
+
+We would appreciate it if you could provide a short comment of at least
+a 100 words providing constructive feedback to the junior investigator
+in the indicated space on the site.
+
+In addition to a critique of the aims, any suggestions you might have for
+possible collaborators, funding sources, or other NYULMC resources
+relevant to the proposed research would be of great value.
 
 Thank you for your time and attention.
 
