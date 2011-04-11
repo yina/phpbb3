@@ -139,6 +139,8 @@ ul.profile-icons li a:hover { background: none; }
 .pm-icon, .pm-icon a				{ background: none top left no-repeat; }
 .quote-icon, .quote-icon a		{ background: none top left no-repeat; }
 
+.forward { background: none top left no-repeat; font-weight: bold; }
+
 /* Moderator icons */
 .report-icon, .report-icon a		{ background: none top left no-repeat; }
 .warn-icon, .warn-icon a			{ background: none top left no-repeat; }
