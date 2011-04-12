@@ -16,6 +16,8 @@ $user->setup();
 // Grab only parameters needed here
 $post_id = request_var('p', 0);
 $forum_id = request_var('f', 0);
+$topic_id = request_var('t', 0);
+
 $emails = utf8_normalize_nfc(request_var('foremails', '', true));
 $submit = (isset($_GET['forward'])) ? true : false;
 
@@ -39,19 +41,29 @@ if ($submit) {
       $template->assign_vars(array('ERROR' => implode('<br />', $error),
                                    'FORUMID'=>$forum_id,
                                    'POSTID'=>$post_id,
+                                   'TOPICID'=>$topic_id
                                   )
                             );
   } else {
       $url = generate_board_url() . "/viewtopic.$phpEx?f=$forum_id&p=$post_id";
       send_femails($emails_string, $url);
 
-      $template->assign_vars(array('MSG'=>'Your post has been forwarded to ' . implode(';', $emails_array) . '.'));
+      $template->assign_vars(array('MSG'=>'Your post has been forwarded to ' . implode(';', $emails_array) . '.',
+                                   'URL'=> $url
+                                  )
+                            );
+
+      // add item to post list
+      post_reply('reply', 'Emailed Faculty', $forum_id, $topic_id, 'Aims emailed to ' . implode(';', $emails_array) . '.');
+      //add_email_reply($sql_data, $db);
+      # send items to function
   }
 
 } else {
   page_header('Forward Post');
   $template->assign_vars(array('FORUMID'=>$forum_id,
-                               'POSTID'=>$post_id
+                               'POSTID'=>$post_id,
+                               'TOPICID'=>$topic_id
                               )
                         );
 

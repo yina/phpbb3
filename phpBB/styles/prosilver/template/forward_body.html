@@ -5,6 +5,7 @@
 <!-- IF MSG -->
    <h2>Forwarded Post</h2>
    <div class="content">{MSG}</div>
+   <div class="content"><a href="{URL}">Go back to your post. </a></div>
 <!-- ELSE -->
     <h2>Forward Post</h2>
 
@@ -21,6 +22,7 @@
                 <input type="hidden" name="forward" value="true" />
                 <input type="hidden" name="p" value="{POSTID}" />
                 <input type="hidden" name="f" value="{FORUMID}" />
+                <input type="hidden" name="t" value="{TOPICID}" />
                 <dd>Multiple emails separated by semicolons. <br/>For example: 'johndoes@nyumc.org;constance@med.nyu.edu'</dd>
                 <input type="submit" name="forward" value="Submit"/>
              </dl>
