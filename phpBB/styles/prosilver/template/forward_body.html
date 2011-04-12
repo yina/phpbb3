@@ -1,19 +1,36 @@
-    <!-- INCLUDE overall_header.html -->
+<!-- INCLUDE overall_header.html -->
 
+<!-- IF ERROR --><p class="error">{ERROR}</p><!-- ENDIF -->
+
+<!-- IF MSG -->
+   <h2>Forwarded Post</h2>
+   <div class="content">{MSG}</div>
+<!-- ELSE -->
     <h2>Forward Post</h2>
 
     <div class="panel">
        <div class="inner"><span class="corners-top"><span></span></span>
 
        <div class="content">
-          <p>
-             Emails to Forward:
-
-          </p>
+           <form action="./forward.php" method="get" id="forward">
+             <dl style="clear: left;">
+                <dt>FORWARD TO EMAIL:</dt>
+                <dd><input type="text" name="foremails" id="foremails" size="45"
+                           maxlength="50" tabindex="2" value=""
+                           class="inputbox autowidth" /></dd>
+                <input type="hidden" name="forward" value="true" />
+                <input type="hidden" name="p" value="{POSTID}" />
+                <input type="hidden" name="f" value="{FORUMID}" />
+                <dd>Multiple emails separated by semicolons. <br/>For example: 'johndoes@nyumc.org;constance@med.nyu.edu'</dd>
+                <input type="submit" name="forward" value="Submit"/>
+             </dl>
+           </form>
        </div>
 
        <span class="corners-bottom"><span></span></span></div>
     </div>
+<!-- ENDIF -->
 
-    <!-- INCLUDE jumpbox.html -->
-    <!-- INCLUDE overall_footer.html -->
+
+<!-- INCLUDE jumpbox.html -->
+<!-- INCLUDE overall_footer.html -->
