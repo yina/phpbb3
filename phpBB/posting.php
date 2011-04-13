@@ -808,7 +808,9 @@ if ($submit || $preview || $refresh) {
 
 
     if (!$preview && !$refresh && utf8_clean_string($post_data['post_femails']) === '' && ($mode == 'post' || ($mode == 'edit' && $post_data['topic_first_post_id'] == $post_id))) {
-        $error[] = $user->lang['EMPTY_FEMAILS'];
+        if ($mode == 'post') {
+            $error[] = $user->lang['EMPTY_FEMAILS'];
+        }
     }
 
     $post_data['poll_last_vote'] = (isset($post_data['poll_last_vote'])) ? $post_data['poll_last_vote'] : 0;
