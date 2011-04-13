@@ -2,18 +2,14 @@
 
 ## ABOUT
 
-phpBB is a free bulletin board written in PHP.
+This is a complete modification of the phpBB bulletin board software to support a custom in-house application. The code
+does not adhere to some of the phpBB coding conventions and may break if changes are made.
+
+This project was forked in
 
 ## COMMUNITY
 
 Find support and lots more on [phpBB.com](http://www.phpbb.com)! Discuss the development on [area51](http://area51.phpbb.com/phpBB/index.php).
-
-## CONTRIBUTE
-
-1. [Create an account on phpBB.com](http://www.phpbb.com/community/ucp.php?mode=register)
-2. [Create a ticket (unless there already is one)](http://tracker.phpbb.com/secure/CreateIssue!default.jspa)
-3. [Read our Git Contribution Guidelines](http://wiki.phpbb.com/Git); if you're new to git, also read [the introduction guide](http://wiki.phpbb.com/display/DEV/Working+with+Git)
-4. Send us a pull request
 
 ## LICENSE
 
