@@ -5,7 +5,7 @@
 This is a complete modification of the phpBB bulletin board software to support a custom in-house application. The code
 does not adhere to some of the phpBB coding conventions and may break if changes are made.
 
-This project was forked in
+This project was forked in December of 2010. Merging with the trunk is not advised.
 
 ## COMMUNITY
 
