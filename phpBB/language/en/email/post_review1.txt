@@ -2,29 +2,24 @@ Subject: A personal invitation to help junior faculty.
 
 {USERNAME},
 
-Dr. Cronstein and I invite you to give feedback to a junior faculty member
-for their proposed specific aims for an upcoming grant application.  You
-received this email because a junior faculty member has identified you
-as an expert in their interest area based on your publication record.
+Dr. Bruce Cronstein of the Clinical and Translational Science Institute
+invites you to participate in a new effort to enhance the grant 
+applications of our junior faculty. Please take a few minutes to
+provide constructive feedback for the Specific Aims of the following grant.
 
-We greatly value your advice and input in this effort to enhance the grant
-applications of our junior faculty.   It is more important now to provide
-constructive criticism of junior faculty grants than it has ever been.
+Grant Title:
+"{SUBJECT}"
 
-You can find the Specific Aims page of a new proposal at:
+Comment on the Specific Aims page at:
+{U_VIEW_POST}
 
-{U_VIEW_POST}.
+Please provide:
+   - a brief critique
+   - potential collaborators (yourself if applicable)
+   - medical center resources that would aid in this research
 
-We would appreciate it if you could provide a short comment of at least
-a 100 words providing constructive feedback to the junior investigator
-in the indicated space on the site.
+Your mentoring efforts will strengthen the grant applications of our junior
+faculty.
 
-In addition to a critique of the aims, any suggestions you might have for
-possible collaborators, funding sources, or other NYULMC resources
-relevant to the proposed research would be of great value.
-
-Thank you for your time and attention.
-
+Thank you for your valuable service to the medical center.
 Dr. Bruce Cronstein
-Dr. Alisa Surkis
-Dr. Yin Aphinyanaphongs
