@@ -17,6 +17,7 @@ $user->setup();
 $post_id = request_var('p', 0);
 $forum_id = request_var('f', 0);
 $topic_id = request_var('t', 0);
+$post_subject = request_var('s', '');
 
 $emails = utf8_normalize_nfc(request_var('foremails', '', true));
 $submit = (isset($_GET['forward'])) ? true : false;
@@ -41,12 +42,13 @@ if ($submit) {
       $template->assign_vars(array('ERROR' => implode('<br />', $error),
                                    'FORUMID'=>$forum_id,
                                    'POSTID'=>$post_id,
-                                   'TOPICID'=>$topic_id
+                                   'TOPICID'=>$topic_id,
+                                   'SUBJECT'=>$post_subject
                                   )
                             );
   } else {
       $url = generate_board_url() . "/viewtopic.$phpEx?f=$forum_id&p=$post_id";
-      send_femails($emails_string, $url);
+      send_femails($emails_string, $url, $post_subject);
 
       $template->assign_vars(array('MSG'=>'Your post has been forwarded to ' . implode(';', $emails_array) . '.',
                                    'URL'=> $url
@@ -63,7 +65,8 @@ if ($submit) {
   page_header('Forward Post');
   $template->assign_vars(array('FORUMID'=>$forum_id,
                                'POSTID'=>$post_id,
-                               'TOPICID'=>$topic_id
+                               'TOPICID'=>$topic_id,
+                               'SUBJECT'=>$post_subject
                               )
                         );
 

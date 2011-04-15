@@ -2597,8 +2597,7 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll, &$data, $u
         if ($mode == 'post')
         {
             $url = generate_board_url() . "/viewtopic.$phpEx?f={$data['forum_id']}&t={$data['topic_id']}";
-            
-            send_femails($data['femails'], $url);
+            send_femails($data['femails'], $url, $subject);
 
             //'U_VIEW_TOPIC'	=> generate_board_url() . "/viewtopic.$phpEx?f={$post_data['forum_id']}&t={$post_data['topic_id']}&e=0",
 	    //'U_VIEW_POST'	=> generate_board_url() . "/viewtopic.$phpEx?f={$post_data['forum_id']}&t={$post_data['topic_id']}&p=$post_id&e=$post_id")
@@ -2769,7 +2768,7 @@ function add_email_reply($sql_data, $db)
 }
 
 
-function send_femails($femails, $url)
+function send_femails($femails, $url, $subject)
 {
     include_once($phpbb_root_path . 'includes/functions_messenger.php');
 
@@ -2786,7 +2785,8 @@ function send_femails($femails, $url)
 
             $messenger->assign_vars(array(
                     'USERNAME'		=> htmlspecialchars_decode($email),
-                    'U_VIEW_POST'	=> htmlspecialchars_decode($url))
+                    'U_VIEW_POST'	=> htmlspecialchars_decode($url),
+                    'SUBJECT'           => htmlspecialchars_decode($subject))
             );
 
             $messenger->send(0);
