@@ -2781,7 +2781,7 @@ function send_femails($femails, $url, $subject)
 
             $messenger->template($email_template, $post_data['user_lang']);
             $messenger->to($email);
-            $messenger->from('aims.med.nyu.edu');
+            $messenger->from('bruce.cronstein@nyumc.org');
 
             $messenger->assign_vars(array(
                     'USERNAME'		=> htmlspecialchars_decode($email),
