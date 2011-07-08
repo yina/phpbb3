@@ -2,10 +2,10 @@ Subject: Dr. Bruce Cronstein invites you to help a junior faculty member.
 
 {USERNAME},
 
-Dr. Bruce Cronstein of the Clinical and Translational Science Institute
-invites you to participate in a new effort to enhance the grant 
-applications of our junior faculty. Please take a few minutes to
-provide constructive feedback for the Specific Aims of the following grant.
+I would like to invite you to participate in a new effort to enhance
+the grant applications of our junior faculty. Please take a few minutes
+to provide constructive feedback for the Specific Aims of the following
+grant.
 
 Grant Title:
 "{SUBJECT}"
@@ -13,7 +13,7 @@ Grant Title:
 Comment on the Specific Aims page at:
 {U_VIEW_POST}
 
-Please provide:
+Please provide any or all of the following:
    - a brief critique
    - potential collaborators (yourself if applicable)
    - medical center resources that would aid in this research
@@ -21,5 +21,7 @@ Please provide:
 By taking these few minutes to mentor a junior faculty member, you are
 providing a valuable service to the medical center.
 
-Thank you,
-Dr. Bruce Cronstein
+Bruce N. Cronstein, MD
+Paul R. Esserman Professor of Medicine
+Director, Clinical and Translational Science Institute
+NYU School of Medicine
